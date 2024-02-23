@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
-# This script
-file_name="7-highlander"
-pids=$(pgrep -f "$file_name")
-if [ -n "$pids" ]; then
-  kill -9 "$pids"
-  echo "Processes with file name '$file_name' terminated forcefully."
-else
-  echo "No processes with file name '$file_name' are currently running."
-fi
+# Bash script that kills the process 7-highlander
+
+var=$(pgrep -f "7-highlander")
+
+kill -9 "$var"
