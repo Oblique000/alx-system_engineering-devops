@@ -4,7 +4,4 @@ file_name="4-to_infinity_and_beyond"
 pids=$(pgrep -f "$file_name")
 if [ -n "$pids" ]; then
   kill "$pids"
-  echo "Processes with file name '$file_name' stopped successfully."
-else
-  echo "No processes with file name '$file_name' are currently running."
 fi
