@@ -1,33 +1,13 @@
 #!/usr/bin/env bash
-# Process and PID file
+# This script
+sudo sh -c 'echo $$ > /var/run/myscript.pid'
 
-pid_file="/var/run/myscript.pid"
-echo $$ > "$pid_file"
+trap 'echo "I hate the kill command"; sudo rm -f /var/run/myscript.pid; exit 0' SIGTERM
+trap 'sudo rm -f /var/run/myscript.pid; exit 0' SIGQUIT 
+trap 'echo "Y U no love me?!"; exit 0' SIGINT
 
-handle_sigterm() {
-	echo "Received SIGTERM signal. Cleaning up..."
-		rm -r "$pid_file"
-		exit 0
-}
-
-handle_sigint() {
-	echo "Received SIGINT signal. Exiting gracefully..."
-		exit 0
-}
-
-handle_sigquit() {
-	echo "Received SIGQUIT signal. Exiting gracefully..."
-		exit 0
-}
-
-trap "handle_sigterm" SIGTERM
-trap "handle_sigint" SIGINT
-trap "handle_sigquit" SIGQUIT
-
-counter=1
-
-while true
+for ((counter=1; ; counter++))
 do
-	echo "To infinity and beyond"
-((counter++))
-	done
+    echo "To infinity and beyond"
+    sleep 2
+done
