@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Process and PID file
+
+pid_file="/var/run/myscript.pid"
+echo $$ > "$pid_file"
+
+handle_sigterm() {
+	echo "Received SIGTERM signal. Cleaning up..."
+		rm -r "$pid_file"
+		exit 0
+}
+
+handle_sigint() {
+	echo "Received SIGINT signal. Exiting gracefully..."
+		exit 0
+}
+
+handle_sigquit() {
+	echo "Received SIGQUIT signal. Exiting gracefully..."
+		exit 0
+}
+
+trap "handle_sigterm" SIGTERM
+trap "handle_sigint" SIGINT
+trap "handle_sigquit" SIGQUIT
+
+counter=1
+
+while true
+do
+	echo "To infinity and beyond"
+((counter++))
+	done
