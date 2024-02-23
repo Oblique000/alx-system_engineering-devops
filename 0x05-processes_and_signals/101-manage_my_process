@@ -40,4 +40,4 @@ case "$1" in
     *)
         echo "Usage: manage_my_process {start|stop|restart}"
         ;;
-esac
+case
