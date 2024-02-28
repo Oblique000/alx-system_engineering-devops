@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#
+# Show attached IPs
+# Description: This script displays the network mask for al network interfaces.
+
+# Extract and display the network masks
+ifconfig | grep "netmask" | awk '{print $2}'
