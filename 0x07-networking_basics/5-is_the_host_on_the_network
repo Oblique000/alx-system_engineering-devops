@@ -2,9 +2,7 @@
 # Script: network_check.sh
 # Description: Checks if a host is reachable on the network using the ping command.
 
-# Ensure at least one command-line argument is provided
 if [ $# -gt 0 ]; then
-  # Perform a ping to the specified IP address with 5 packets
   ping "$1" -c 5
 else
   # Display usage information if no IP address is provided
