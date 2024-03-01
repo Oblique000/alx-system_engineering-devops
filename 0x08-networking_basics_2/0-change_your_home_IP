@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 # Change your home IP
+echo "8.8.8.8	facebook.com" >> /etc/hosts
 
-# Add entry for facebook.com
-echo "8.8.8.8	facebook.com" | sudo tee -a /etc/hosts
-
-# Add entry for localhost
-echo "127.0.0.2 localhost" | sudo tee -a /etc/hosts
+echo "127.0.0.2 localhost" >> /etc/hosts
