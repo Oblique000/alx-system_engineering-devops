@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Script: network_check.sh
-# Description: Checks if a host is reachable on the network using the ping command.
 
 if [ $# -gt 0 ]; then
   ping "$1" -c 5
