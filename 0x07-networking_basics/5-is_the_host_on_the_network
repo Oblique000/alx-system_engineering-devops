@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-# Script: network_check.sh
-
+# The script
 if [ $# -gt 0 ]; then
   ping "$1" -c 5
 else
-  # Display usage information if no IP address is provided
-  echo "Usage: $0 {IP_ADDRESS}"
+  echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 fi
