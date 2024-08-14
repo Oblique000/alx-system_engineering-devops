@@ -2,24 +2,25 @@
 """0-subs module"""
 import requests
 
-
 def number_of_subscribers(subreddit):
-    """
-    number_of_subscribers: returns the number of subscribers
-    (not active users, total subscribers)
-    for a given subreddit
-    """
-    headers = {'User-Agent': 'My User Agent'}
+	"""
+	number_of_subscribers: returns the number of subscribers
+	(not active users, total subscribers)
+	for a given subreddit.
+	"""
+	headers = {'User-Agent': 'My User Agent'}
+	url = f'https://www.reddit.com/r/{subreddit}/about.json'
 
-    url = f'https://www.reddit.com/r/{subreddit}/about.json'
+	try:
+	response = requests.get(url, headers=headers)
+response.raise_for_status()
 
-    r = requests.get(url, headers=headers)
+	if response.header.get('Content-Type') == 'application.json; charset=utf-8':
+data = response.json()
+	subscribers_count = data.get('data', {}).get('subscribers', 0)
+	return subscriber_count
 
-    if r.status_code == 200:
-        if r.text:
-            data = r.json()
+	except requests.RequestException as e:
+	print(f"An error occured: {e}")
 
-            subcribers_count = data['data']['subscribers']
-            return subcribers_count
-
-    return 0
+	return 0
